@@ -2,13 +2,15 @@
     "required": true,
     "minVersion": "0.8",
     "package": "com.sertinty.pieplus.mixin",
-    "compatibilityLevel": "JAVA_21",
+    "compatibilityLevel": "JAVA_25",
     "client": [
-        "KeyboardMixin",
-        "MinecraftClientMixin",
-        "PieChartMixin"
+        "KeyboardHandlerMixin",
+        "ProfilerPieChartMixin"
     ],
     "injectors": {
         "defaultRequire": 1
+    },
+    "overwrites": {
+        "requireAnnotations": true
     }
 }

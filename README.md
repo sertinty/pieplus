@@ -1,16 +1,33 @@
 # PiePlus 饼图多位数选择
 
-Minecraft **1.21.11** / Fabric 的**纯客户端**模组。
+修复 Minecraft 调试饼图（profiler pie chart）里**编号大于 9 的切片无法选中**的问题。
 
-修复 F3 调试饼图（profiler pie chart）里**编号大于 9 的切片无法选中**的问题。
+- **纯客户端**，只依赖 Fabric Loader，**不需要 Fabric API**
+- 不改按键绑定；**直接按数字的手感和原版一模一样，零延迟**
+
+---
+
+## 下载哪个文件
+
+按你的游戏版本选：
+
+| Minecraft 版本 | 下载 |
+| --- | --- |
+| 1.21.11 | `pieplus-1.0.0-mc1.21.11.jar` |
+| 26.1 | `pieplus-1.0.0-mc26.1.jar` |
+| 26.1.1 | `pieplus-1.0.0-mc26.1.1.jar` |
+| 26.1.2 | `pieplus-1.0.0-mc26.1.2.jar` |
+| 26.2 | `pieplus-1.0.0-mc26.2.jar` |
+| 26.3 | `pieplus-1.0.0-mc26.3.jar` |
+
+全部在 [Releases](../../releases) 页面。
 
 ---
 
 ## 安装
 
-1. 装好 Fabric Loader（**≥ 0.19.3**）
-2. 到 [Releases](https://github.com/sertinty/pieplus/releases) 下载 `pieplus-1.0.0.jar`
-3. 把 jar 放进 `.minecraft/mods/`
+1. 装好 Fabric Loader（**1.21.11 需要 ≥ 0.19.3；26.x 需要 ≥ 0.19.5**）
+2. 把对应版本的 jar 放进 `.minecraft/mods/`
 
 **不需要 Fabric API。**
 
@@ -47,23 +64,58 @@ Minecraft **1.21.11** / Fabric 的**纯客户端**模组。
 
 ---
 
-## 环境要求
+## 支持的版本与源码分支
 
-| 组件 | 版本 |
-| --- | --- |
-| Minecraft | 1.21.11 |
-| Fabric Loader | ≥ 0.19.3 |
-| Fabric API | 不需要 |
-| Java | 21 |
+| 分支 | 对应 Minecraft | 工具链 |
+| --- | --- | --- |
+| `main` | 26.1 – 26.3 | 官方命名（26.x 起 Minecraft 不再混淆）、Loom 1.18-SNAPSHOT、Java 25 |
+| `1.21.11` | 1.21.11 | Yarn 映射、Loom 1.17.20、Java 21 |
+
+想在别的版本上用，请切到对应分支再改。
+
+---
+
+## 欢迎提交 PR
+
+**非常欢迎 PR**，尤其是下面这些方向：
+
+- **适配更多 Minecraft 版本** —— 目前覆盖 1.21.11 与 26.1 – 26.3，1.21.4 – 1.21.10 还没有人做
+- **改进多位数输入的交互** —— 比如换用别的修饰键、加输入提示、支持回车直接确认
+- **修 bug 或补文档** —— 错别字、说明不清、翻译都欢迎
+
+提交前请注意：
+
+1. 一个 PR 只做一件事，说明清楚改了哪个版本、为什么
+2. 确认 `./gradlew build` 能过
+3. 涉及 26.x 的改动请用 `main` 分支，涉及 1.21.11 的请切到 `1.21.11` 分支
+
+不确定能不能做、或者想讨论方案，直接开 Issue 就行。
 
 ---
 
 ## 自己编译
 
+### 26.1 – 26.3（`main` 分支）
+
+需要 **JDK 25**：
+
 ```bash
-JAVA_HOME=/path/to/jdk-21 ./gradlew build
-# 产物：build/libs/pieplus-1.0.0.jar
+JAVA_HOME=/path/to/jdk-25 ./gradlew build
+# 产物：build/libs/pieplus-mc<版本>-<mod版本>.jar
 ```
+
+改 `gradle.properties` 里的 `minecraft_version` 就能切换目标版本。
+
+### 1.21.11（`1.21.11` 分支）
+
+需要 **JDK 21**：
+
+```bash
+git checkout 1.21.11
+JAVA_HOME=/path/to/jdk-21 ./gradlew build
+```
+
+---
 
 ## License
 
