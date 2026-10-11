@@ -1,0 +1,30 @@
+{
+    "schemaVersion": 1,
+    "id": "pieplus",
+    "version": "${version}",
+    "name": "PiePlus 饼图多位数选择",
+    "description": "修复原版 F3 调试饼图只能选 0-9 号切片的问题：序号超过 9 之后可以继续输入多位数来选择。纯客户端。",
+    "authors": [
+        "sertinty"
+    ],
+    "contact": {},
+    "license": "MIT",
+    "icon": "assets/pieplus/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "com.sertinty.pieplus.PiePlusClient"
+        ]
+    },
+    "mixins": [
+        {
+            "config": "pieplus.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "depends": {
+        "fabricloader": ">=0.19.3",
+        "minecraft": "~1.21.11",
+        "java": ">=21"
+    }
+}
